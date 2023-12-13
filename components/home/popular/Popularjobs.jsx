@@ -11,15 +11,14 @@ import {
 import styles from "./popularjobs.style";
 import { COLORS, SIZES } from "../../../constants";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
-// import useFetch from "../../../hook/useFetch";
+import useFetch from "../../../hook/useFetch";
 
 const Popularjobs = () => {
   const router = useRouter();
-  const { isLoading, error } = false;
-  // const { data, isLoading, error } = useFetch("search", {
-  //   query: "React developer",
-  //   num_pages: "1",
-  // });
+  const { data, isLoading, error } = useFetch("search", {
+    query: "React developer",
+    num_pages: "1",
+  });
 
   const [selectedJob, setSelectedJob] = useState();
 
@@ -44,8 +43,7 @@ const Popularjobs = () => {
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
-            // data={data}
-            data={[1, 2, 3, 4, 5]}
+            data={data}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
